@@ -1,7 +1,7 @@
 #########################################################
 ## Canonical fundamental ST-LMM for a simulated sample ##
 #########################################################
-## last updated in 2021-09-23
+## last updated in 2022-03-29
 ## downloaded from https://github.com/fernandalschumacher/cfstlmm
 
 #loading packages
@@ -237,7 +237,7 @@ g2 <- data.frame(b0g, z2) %>% pivot_longer(cols = -1) %>%
   ggtitle("(b)") + ylab(expression(b[1])) + xlab(expression(b[0])) +
   theme(plot.title = element_text(face = "italic")) +
   geom_point(
-    data = as.data.frame(fitST1$random.effects),
+    data = as.data.frame(fitST2$random.effects),
     aes(`(Intercept)`, x , z = NULL),
     col = 'azure4',
     alpha = alpha1
@@ -248,7 +248,7 @@ g3 <- data.frame(b0g, z3) %>% pivot_longer(cols = -1) %>%
   ggtitle("(c)") + ylab(expression(b[1])) + xlab(expression(b[0])) +
   theme(plot.title = element_text(face = "italic")) +
   geom_point(
-    data = as.data.frame(fitST1$random.effects),
+    data = as.data.frame(fitST.SBD$random.effects),
     aes(`(Intercept)`, x , z = NULL),
     col = 'azure4',
     alpha = alpha1

@@ -19,6 +19,7 @@ EM.Skew<- function(formFixed, #two sided formula for the fixed effects (e.g. y ~
                    showerroriter=FALSE #if TRUE the current convergence criteria will be printed at each iteration
 ){
   ti = Sys.time()
+  if (is_tibble(data)) data <- as.data.frame(data)
   x <- model.matrix(formFixed,data=data)
   varsx <- all.vars(formFixed)[-1]
   y <-data[,all.vars(formFixed)[1]]
@@ -121,6 +122,7 @@ EM.Skew<- function(formFixed, #two sided formula for the fixed effects (e.g. y ~
     }
   }
   obj.out$loglik <-as.numeric(llji)
+  obj.out$N <- N
   obj.out$elapsedTime = as.numeric(difftime(tf,ti,units="secs"))
   obj.out$error=criterio
   obj.out
@@ -143,6 +145,7 @@ EM.Skew.Sahu<- function(formFixed, #two sided formula for the fixed effects (e.g
                         showerroriter=FALSE #if TRUE the current convergence criteria will be printed at each iteration
 ){
   ti = Sys.time()
+  if (is_tibble(data)) data <- as.data.frame(data)
   x <- model.matrix(formFixed,data=data)
   varsx <- all.vars(formFixed)[-1]
   y <-data[,all.vars(formFixed)[1]]
@@ -253,6 +256,7 @@ EM.Skew.Sahu<- function(formFixed, #two sided formula for the fixed effects (e.g
     }
   }
   obj.out$loglik <-as.numeric(llji)
+  obj.out$N <- N
   obj.out$elapsedTime = as.numeric(difftime(tf,ti,units="secs"))
   obj.out$error=criterio
   obj.out
